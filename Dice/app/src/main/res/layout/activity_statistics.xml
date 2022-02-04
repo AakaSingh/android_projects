@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    tools:context=".StatisticsActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/statistics_totalRolls"/>
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="2"
+        android:layout_weight="1"
+        android:rowCount="6"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:src="@drawable/dice1"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            />
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:src="@drawable/dice2"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            />
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:src="@drawable/dice3"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            />
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:src="@drawable/dice4"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            />
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:src="@drawable/dice5"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            />
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:src="@drawable/dice6"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            />
+
+
+        <TextView
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/statistics_dice1"/>
+
+        <TextView
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/statistics_dice2"/>
+
+        <TextView
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/statistics_dice3"/>
+
+        <TextView
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/statistics_dice4"/>
+
+        <TextView
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/statistics_dice5"/>
+
+        <TextView
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/statistics_dice6"/>
+    </GridLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/resetButton"
+        android:id="@+id/statistics_reset"
+        />
+
+</LinearLayout>

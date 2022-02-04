@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">dado</string>
+    <string name="resetButton">" Reiniciar"</string>
+    <string name="statistics">estadísticas</string>
+    <string name="roll">enróllalo</string>
+    <string name="nullMessage">Sin datos para mostrar, retroceder y rodar</string>
+    <string name="total">Rollos totales :  %d</string>
+</resources>

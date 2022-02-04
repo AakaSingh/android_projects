@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Day3</string>
     <string name="sendButton">Send</string>
+    <string name="textHint" translatable="false">Text Goes Here</string>
 </resources>

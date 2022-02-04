@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="nullMessage">Aucune donnée à afficher, revenir en arrière et rouler</string>
+    <string name="roll">rouleau</string>
+    <string name="statistics">statistiques</string>
+    <string name="resetButton">réinitialiser</string>
+    <string name="app_name">dé</string>
+    <string name="total">nombre total de rouleaux :  %d</string>
+</resources>

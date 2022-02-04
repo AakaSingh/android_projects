@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">पासा</string>
+    <string name="resetButton">रीसेट</string>
+    <string name="statistics">आंकड़े</string>
+    <string name="roll">घुमाओ</string>
+    <string name="nullMessage">दिखाने के लिए कोई डेटा नहीं, वापस जाएं और रोल करें</string>
+    <string name="total">कुल रोल :  %d</string>
+</resources>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="total">ਕੁੱਲ ਰੋਲ :  %d</string>
+    <string name="nullMessage">ਦਿਖਾਉਣ ਲਈ ਕੋਈ ਡਾਟਾ ਨਹੀਂ, ਵਾਪਸ ਜਾਓ ਅਤੇ ਰੋਲ ਕਰੋ</string>
+    <string name="roll">ਇਸ ਨੂੰ ਰੋਲ ਕਰੋ</string>
+    <string name="statistics">ਅੰਕੜੇ</string>
+    <string name="resetButton">ਰੀਸੈਟ</string>
+    <string name="app_name">ਪਾਸਾ</string>
+</resources>
