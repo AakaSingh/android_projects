@@ -3,7 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Day4/app/src/main/res/layout/activity_logged_in.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Day4/app/src/main/res/layout/activity_login.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Day4/app/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Day4/app/src/main/res/layout/activity_register.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Day4/app/src/main/res/layout/activity_toast.xml" value="0.25" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Day4/app/src/main/res/menu/menu.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Day4/app/src/main/res/menu/nested_menu.xml" value="0.20416666666666666" />
       </map>
     </option>
   </component>

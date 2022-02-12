@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_marginTop="100dp"
+    android:columnCount="2"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+    <Space
+        android:layout_rowWeight="1"
+        android:layout_columnWeight="1"/>
+    <TextView
+        android:layout_rowWeight="1"
+        android:layout_columnWeight="1"
+        android:autoSizeTextType="uniform"
+        android:text="Total"
+        />
+
+    <Button
+        android:width="0dp"
+        android:layout_rowWeight="1"
+        android:layout_columnWeight="1"
+        android:id="@+id/main_createToast"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/createToast" />
+    <TextView
+        android:layout_rowWeight="1"
+        android:layout_columnWeight="1"
+        android:autoSizeTextType="uniform"
+        android:gravity="end"
+        android:id="@+id/main_toastCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0" />
+
+    <Button
+        android:width="0dp"
+        android:layout_rowWeight="1"
+        android:layout_columnWeight="1"
+        android:id="@+id/main_createSnackBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/createSnackBar" />
+
+    <TextView
+        android:layout_rowWeight="1"
+        android:layout_columnWeight="1"
+        android:gravity="end"
+        android:autoSizeTextType="uniform"
+        android:id="@+id/main_snackBarCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0" />
+
+</GridLayout>

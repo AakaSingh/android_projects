@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nested_menu_item1"
+        android:title="@string/help"
+        />
+    <item
+        android:id="@+id/nested_menu_item2"
+        android:title="@string/settings"
+        >
+        <menu>
+            <item
+                android:id="@+id/nested_menu_item21"
+                android:title="@string/settings"
+                />
+        </menu>
+    </item>
+</menu>

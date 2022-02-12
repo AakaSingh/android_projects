@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Day5</string>
+    <string name="createSnackBar">Create Snackbar</string>
+    <string name="createToast">Create Toast</string>
+</resources>

@@ -12,6 +12,7 @@
        android:layout_width="match_parent"
        android:layout_height="0dp"
        android:layout_weight="3"
+       android:id="@+id/main_mainImage"
        android:src="@drawable/mario"/>
 
     <HorizontalScrollView
@@ -28,11 +29,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:src="@drawable/mario"
+                android:id="@+id/main_image1"
                 android:adjustViewBounds="true"
                 android:scaleType="centerInside"
                 />
 
             <ImageView
+                android:id="@+id/main_image2"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:adjustViewBounds="true"
@@ -44,6 +47,7 @@
                 android:layout_height="match_parent"
                 android:src="@drawable/another_dog"
                 android:adjustViewBounds="true"
+                android:id="@+id/main_image3"
                 android:scaleType="centerInside"
                 />
 

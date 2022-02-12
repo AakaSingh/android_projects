@@ -7,30 +7,26 @@ import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 
-class MainActivity : AppCompatActivity(), View.OnClickListener {
-    lateinit var editTextName: EditText
+class MainActivity : AppCompatActivity(){
 
+    private lateinit var mainImageView: ImageView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_day2)
+        setContentView(R.layout.activity_main)
+        mainImageView = findViewById<ImageView>(R.id.main_mainImage)
+        val firstImage = findViewById<ImageView>(R.id.main_image1)
+        val secondImage = findViewById<ImageView>(R.id.main_image2)
+        val thirdImage = findViewById<ImageView>(R.id.main_image3)
 
-        editTextName = findViewById<EditText>(R.id.name_value)
-        editTextName.setText("Hello Your Value Is Here")
-
-        val senderButton = findViewById<Button>(R.id.sender_button)
-        //senderButton.setOnClickListener(this)
-        senderButton.setOnClickListener(this::senderButtonClicked)
+        firstImage.setOnClickListener(this::onImageClick)
+        secondImage.setOnClickListener(this::onImageClick)
+        thirdImage.setOnClickListener(this::onImageClick)
     }
 
-    private  fun senderButtonClicked(view: View?){
-        Log.e("this","clicked")
-        val intent = Intent(this, SecondActivity::class.java).apply {
-            putExtra("name",editTextName.text.toString())
-        }
-        startActivity(intent)
-    }
-    override fun onClick(p0: View?) {
-        Log.e("button clicked", "onClick: this action ", )
+    private fun onImageClick(view: View?){
+        val clickedImage : ImageView = view as ImageView
+        mainImageView.setImageDrawable(clickedImage.drawable)
     }
 }
