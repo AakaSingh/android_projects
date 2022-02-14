@@ -7,6 +7,8 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import androidx.recyclerview.widget.RecyclerView
+import com.aakash.discogapi.db.DiscogsDbContract
+import com.aakash.discogapi.db.FavoritesTable
 import com.aakash.discogapi.entities.RawJsonData
 import com.aakash.discogapi.network.DiscogsApi
 import com.aakash.discogapi.recyclerview.AlbumAdapter

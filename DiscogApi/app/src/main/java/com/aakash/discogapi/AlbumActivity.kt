@@ -4,12 +4,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
+import com.aakash.discogapi.db.FavoritesTable
 import com.aakash.discogapi.entities.Album
 import com.squareup.picasso.Picasso
 import org.w3c.dom.Text
 
 class AlbumActivity : AppCompatActivity() {
 
+    private lateinit var favoritesTable : FavoritesTable
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_album)
