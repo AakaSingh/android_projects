@@ -4,8 +4,10 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/DiscogApi/app/src/main/res/layout/activity_album.xml" value="0.1" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/DiscogApi/app/src/main/res/layout/activity_favorites.xml" value="0.1" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/DiscogApi/app/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
-        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/DiscogApi/app/src/main/res/layout/list_item.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/DiscogApi/app/src/main/res/layout/favorite_item.xml" value="0.1" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/DiscogApi/app/src/main/res/layout/list_item.xml" value="0.12291666666666666" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/DiscogApi/app/src/main/res/layout/single_album_view.xml" value="0.1" />
       </map>
     </option>

@@ -1,5 +1,6 @@
 package com.aakash.chatbot
 
+import android.app.Activity
 import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.Color
@@ -7,12 +8,20 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.speech.RecognizerIntent
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
 import android.widget.EditText
 import android.widget.Toast
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.widget.doOnTextChanged
 import androidx.recyclerview.widget.RecyclerView
+import com.aakash.chatbot.db.NotesDbContract
+import com.aakash.chatbot.db.NotesTable
 import com.aakash.chatbot.entities.AIResponse
 import com.aakash.chatbot.entities.Chat
 import com.aakash.chatbot.network.BrainShoApi
@@ -21,6 +30,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -32,8 +42,24 @@ class MainActivity : AppCompatActivity() {
     lateinit var chatAdapter: ChatAdapter
     private lateinit var recyclerView: RecyclerView
     private lateinit var messageContent: EditText
+    private lateinit var senderButton: FloatingActionButton
     private var chatsList = mutableListOf<Chat>()
+    private lateinit var notesTable: NotesTable
 
+    private val resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+            result: ActivityResult ->
+        run {
+            senderButton.setImageDrawable(resources.getDrawable(R.drawable.microphone))
+            if (result.resultCode == RESULT_OK &&
+                result.data != null)
+            {
+                val speechInput = result.data
+                val speechInputText = speechInput?.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS)?.get(0)
+                if(checkOptionsAdded(speechInputText as String))
+                    messageContent.setText(speechInputText)
+            }
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,7 +67,8 @@ class MainActivity : AppCompatActivity() {
 
         recyclerView = findViewById(R.id.main_recycler)
         messageContent = findViewById(R.id.main_userMessage)
-        val senderButton = findViewById<FloatingActionButton>(R.id.main_sendMessage)
+        senderButton = findViewById<FloatingActionButton>(R.id.main_sendMessage)
+        notesTable = NotesTable(this)
 
         chatsList.add(Chat("Hey! What's on your mind?", BOT_KEY))
         chatAdapter = ChatAdapter(chatsList)
@@ -56,19 +83,37 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        messageContent.addTextChangedListener(object : TextWatcher {
+
+            override fun afterTextChanged(s: Editable) {
+                if(messageContent.text.toString()  == "")
+                    senderButton.setImageDrawable(resources.getDrawable(R.drawable.microphone))
+                else
+                    senderButton.setImageDrawable(resources.getDrawable(R.drawable.ic_send))
+            }
+
+            override fun beforeTextChanged(s: CharSequence, start: Int,
+                                           count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence, start: Int,
+                                       before: Int, count: Int) {
+            }
+        })
+
     }
 
     private fun onSenderButtonClicked(view: View){
         if(messageContent.text.toString() == "")
-            Toast.makeText(this,"Please enter a message",Toast.LENGTH_SHORT).show()
+            getSpeechInput()
         else
             getResponse()
 
         messageContent.setText("")
     }
 
-    private fun checkOptionsAdded(userRequest : String) : Boolean{
-        if(userRequest.indexOf("open camera")>-1 && userRequest.indexOf("don't")==-1 && userRequest.indexOf("not")==-1){
+    private fun checkOptionsAdded( userRequest : String) : Boolean{
+        if(userRequest.contains("open camera",true) && userRequest.indexOf("don't")==-1 && userRequest.indexOf("not")==-1){
             Handler(Looper.getMainLooper()).postDelayed(Runnable {
                 chatAdapter.addData(Chat("Opening Camera...", BOT_KEY))
                 recyclerView.smoothScrollToPosition(chatAdapter.itemCount)
@@ -79,9 +124,23 @@ class MainActivity : AppCompatActivity() {
             return false
         }
 
-        if(userRequest.indexOf("email") > -1){
+        if(userRequest.contains("send email", true)){
             Handler(Looper.getMainLooper()).postDelayed(Runnable {
                 openEmailDialog()
+            }, 1000)
+            return false
+        }
+
+        if(userRequest.contains("take notes",true)){
+            Handler(Looper.getMainLooper()).postDelayed(Runnable {
+                openNotesDialog()
+            }, 1000)
+            return false
+        }
+
+        if(userRequest.contains("view notes",true)){
+            Handler(Looper.getMainLooper()).postDelayed(Runnable {
+                openNotesActivity()
             }, 1000)
             return false
         }
@@ -128,16 +187,52 @@ class MainActivity : AppCompatActivity() {
         val builder = AlertDialog.Builder(this)
         val dialogView : View = layoutInflater.inflate(R.layout.activity_send_email_dialog, null)
         builder.setView(dialogView)
-        /*builder.setPositiveButton("Send Email") { dialog, _ ->
+        builder.setPositiveButton("Send Email") { dialog, _ ->
             dialog.dismiss()
         }
         builder.setNeutralButton("Cancel"){ dialog,_ ->
             dialog.dismiss()
-        }*/
+        }
         val alertDialog: AlertDialog = builder.create()
         alertDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         alertDialog.show()
     }
 
+    private fun openNotesDialog(){
+        val builder = AlertDialog.Builder(this)
+        val dialogView : View = layoutInflater.inflate(R.layout.notes_dialog, null)
+        builder.setView(dialogView)
+        builder.setPositiveButton("Save") { dialog, _ ->
+            var noteName = dialogView.findViewById<EditText>(R.id.notes_dialog_name)
+            var noteContent = dialogView.findViewById<EditText>(R.id.notes_dialog_content)
+            notesTable.insertData(noteName.text.toString(), noteContent.text.toString())
+            dialog.dismiss()
+        }
+        builder.setNeutralButton("Cancel"){ dialog,_ ->
+            dialog.dismiss()
+        }
+        val alertDialog: AlertDialog = builder.create()
+        alertDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        alertDialog.show()
+    }
 
+    private fun openNotesActivity(){
+        val intent = Intent(this, NotesActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun getSpeechInput()
+    {
+        senderButton.setImageDrawable(resources.getDrawable(R.drawable.mic))
+        val intent = Intent(
+            RecognizerIntent
+            .ACTION_RECOGNIZE_SPEECH)
+        intent.putExtra(
+            RecognizerIntent.EXTRA_LANGUAGE_MODEL,
+            RecognizerIntent.LANGUAGE_MODEL_FREE_FORM
+        )
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE,
+            Locale.getDefault())
+            resultLauncher.launch(intent)
+    }
 }

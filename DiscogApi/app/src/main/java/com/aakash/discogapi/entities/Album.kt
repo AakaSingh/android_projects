@@ -10,6 +10,6 @@ data class Album (
     val genre : List<String>,
     val style : List<String>,
     val year : String,
-    val id : Int
+    var id : Long
 ) : Serializable{
 }

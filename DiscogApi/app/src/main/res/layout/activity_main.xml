@@ -31,4 +31,9 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:scrollbars="vertical"/>
 
+    <Button
+        android:id="@+id/main_viewFavorites"
+        android:text="View Favorites"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 </LinearLayout>

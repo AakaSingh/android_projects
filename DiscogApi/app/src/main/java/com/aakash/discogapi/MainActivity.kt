@@ -1,5 +1,6 @@
 package com.aakash.discogapi
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -28,7 +29,13 @@ class MainActivity : AppCompatActivity() {
 
         searchBar = findViewById(R.id.main_searchBar)
         val searchButton = findViewById<Button>(R.id.main_searchButton)
+        val viewFavoritesButton = findViewById<Button>(R.id.main_viewFavorites)
+
         searchButton.setOnClickListener(this::onSearchButtonClicked)
+        viewFavoritesButton.setOnClickListener {
+            val intent = Intent(this,FavoritesActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun onSearchButtonClicked(view: View){

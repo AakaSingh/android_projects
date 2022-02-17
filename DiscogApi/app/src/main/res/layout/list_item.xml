@@ -21,13 +21,13 @@
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"/>
         <TextView
-            android:autoSizeTextType="uniform"
             android:id="@+id/list_item_title"
-            android:layout_rowWeight="3"
+            android:layout_rowWeight="1"
+            android:gravity="center"
             android:layout_columnWeight="1"
             />
         <TextView
-            android:autoSizeTextType="uniform"
+            android:gravity="center"
             android:id="@+id/list_item_genre"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
